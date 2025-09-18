@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Arial, sans-serif;
+  }
+
+  /* アクセシビリティ対応 */
+  :focus-visible {
+    @apply outline-2 outline-primary outline-offset-2;
+  }
+
+  /* セクション見出し */
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-primary mb-6 text-center;
+  }
+
+  /* カードスタイル */
+  .card {
+    @apply bg-accent rounded-2xl shadow-soft p-6;
+  }
+}
+
+@layer components {
+  /* 外部リンク */
+  .external-link {
+    @apply inline-flex items-center gap-1 text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  /* ボタン */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary/90;
+  }
+
+  /* セクションラッパー */
+  .section-wrapper {
+    @apply max-w-6xl mx-auto px-4 py-16 md:py-24;
+  }
+}

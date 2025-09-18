@@ -1,0 +1,91 @@
+あなたはシニアフロントエンドエンジニアです。現在のリポジトリは create-next-app 直後の Next.js 15（App Router）＋TypeScript＋Tailwind 構成で、パッケージマネージャは npm を使います。以下を一括で実装・調整してください。ファイル生成・編集はすべて自動で行ってください（コードはあなたが生成）。
+
+■ ゴール
+	•	1ページLP。アンカー：#home, #news, #profile, #about, #music, #mv, #contact
+	•	青 #0B65C2 × 白を基調。参考トーン：SnowMan / M!LK
+	•	完全静的エクスポート対応（npm run build && npm run export → out/ をさくら等の静的ホスティングに配置）
+	•	NEWS は外部 JSON フィード（環境変数 NEWS_FEED_URL）からビルド時に取得。失敗時はローカルのフォールバックで表示
+	•	スマホ最優先。Lighthouse（Performance/A11y/Best Practices/SEO）各 90 以上
+
+■ 必須調整（npm 前提）
+	•	next.config.js：output: 'export'、images.unoptimized: true
+	•	package.json に "export": "next export" を追加（npm 用）
+	•	.env.example に NEWS_FEED_URL= を用意
+	•	public/robots.txt と public/sitemap.xml を用意（トップのみで可）
+	•	SEO：app/layout.tsx の metadata に title/description/openGraph/twitter を設定（後述データから）
+	•	すべてサーバーコンポーネント中心。クライアントJSは最小限
+
+■ データと構成
+	•	src/data/site.json に固定情報（サイト名、SNS、プロフィール、ABOUT、MUSIC、MV、CONTACT、NEWSフォールバック）を格納
+	•	src/lib/news.ts を作成：getNews() がビルド時に process.env.NEWS_FEED_URL を fetch → スキーマ検証（Zod）→ 配列返却。失敗時は site.json.newsFallback
+	•	src/components/ に以下（名称は任意、役割は必須）
+	•	Header（ロゴ/ナビ、SPはハンバーガー）
+	•	Section（max-w-6xl 相当の共通ラッパー）
+	•	Hero（大きなタイポ＋サブコピー）
+	•	SocialLinks（X/Instagram/TikTok/YouTube）
+	•	NewsList（NEWSカード：日付・タイトル・任意URL）
+	•	ProfileGrid（6名のグリッド：sm1列/md2列/lg3列）
+	•	AboutSection
+	•	MusicLinks（Apple Music アーティスト＋曲リンク）
+	•	MVEmbed（16:9 レスポンシブ iframe、loading="lazy"、referrerpolicy="strict-origin-when-cross-origin"）
+	•	ContactBlock（mailto: ボタン）
+	•	Footer（コピーライト、SNS再掲、トップへ戻る）
+	•	src/app/page.tsx に HOME/Social/NEWS/PROFILE/ABOUT/MUSIC/MV/CONTACT をこの順で配置
+
+■ UI/UX
+	•	余白広め、カードは #E6F0FB の淡い背景＋角丸 2xl＋ソフトシャドウ
+	•	Tailwind テーマ拡張：primary:#0B65C2, accent:#E6F0FB, background:#FFFFFF, foreground:#0A0A0A
+	•	MV は幅に追従し縦横比維持（16:9）
+	•	外部リンクは新規タブ、ラベル明確、ホバー時に視認性あり
+	•	prefers-reduced-motion 尊重
+
+■ アクセシビリティ
+	•	<header><main><footer> と各セクションに適切なランドマーク/見出し階層
+	•	コントラスト AA 準拠（青地×白文字）
+	•	キーボード操作可、フォーカス可視
+
+■ コンテンツ（site.json に格納）
+	•	サイト名：NiziIRO ぱれっと
+	•	URL（仮）：https://palette-promotion/niziiropalette.com/
+	•	SNS：
+	•	X: https://x.com/Nizi_Pale_info
+	•	Instagram: https://www.instagram.com/nizi_pale_info/
+	•	TikTok: https://www.tiktok.com/@nizi_pale_official
+	•	YouTube: https://www.youtube.com/@niziiro7203
+	•	NEWS フォールバック：
+	•	2025.8.12 豊洲PIT 3rdワンマンLIVEを開催
+	•	2025.10.10 ビクターエンタテインメントより1st メジャーシングルをリリース
+	•	2026.1.9 浅草花劇場 バントセット単独LIVEを開催
+	•	PROFILE：
+	•	あきと（イエロー／2月21日／趣味: TCG/ガンプラ／特技: 綺麗な球体を作れる）
+	•	けんご（グリーン／4月3日／趣味: 東京ヴェルディ／特技: サッカー(幼稚園から)）
+	•	だいや（レッド／4月15日／趣味: YouTube鑑賞／特技: バスケ(全国大会出場)）
+	•	なぎさ（ライトブルー／7月28日／趣味: 温泉／特技: 鼻がいい）
+	•	ましろ（ピンク／2月28日／趣味: 犬の散歩／特技: コスプレ/歌ってみた）
+	•	ゆいと（オレンジ／12月19日／趣味: スニーカー探し／特技: サッカー）
+	•	ABOUT：
+	•	「NiziIRO ぱれっとは、鮮やかな個性とハーモニーで魅了するボーイズグループ。ライブ・映像・SNSを通じて多彩な『色』を届けます。」
+	•	MUSIC：
+	•	アーティスト: https://music.apple.com/jp/artist/niziiroぱれっと/1647296638
+	•	曲：HAPPY EVER AFTER → https://music.apple.com/jp/album/happy-ever-after/1805093925?i=1805093926
+	•	MV（半年固定）：
+	•	タイトル：MV【HAPPY EVER AFTER】
+	•	埋め込み：https://www.youtube.com/embed/3l6XSEABLnk?si=TbFfRkadZzHYuq-n
+	•	CONTACT：info@nizi-pale.com
+
+■ NEWS 取得仕様
+	•	.env の NEWS_FEED_URL からビルド時のみ fetch し、Zod で { items: { date: string; title: string; url?: string }[] } を検証
+	•	取得/検証失敗時は site.json.newsFallback を表示
+	•	ランタイム API コールは不可（完全静的）
+
+■ 検収条件（npm）
+	•	npm run build && npm run export が成功し、out/ で正しく表示
+	•	NEWS_FEED_URL 未設定でもフォールバックでNEWS表示
+	•	375px 幅でレイアウト崩れなし、MV はレスポンシブでアスペクト維持
+	•	主要リンクは新規タブ、アクセシブルなラベル
+	•	TypeScript エラーなし、ESLint/Prettier 適用
+	•	Lighthouse 4項目 90 以上（ローカル評価で可）
+
+⸻
+
+これで npm だけで回せます。必要なら、管理画面側（JSON生成）や GitHub Actions の「JSON更新→自動リビルド」も用意できます

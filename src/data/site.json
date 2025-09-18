@@ -1,0 +1,90 @@
+{
+  "siteName": "NiziIRO ぱれっと",
+  "siteUrl": "https://palette-promotion/niziiropalette.com/",
+  "description": "鮮やかな個性とハーモニーで魅了するボーイズグループ。ライブ・映像・SNSを通じて多彩な『色』を届けます。",
+  "social": {
+    "x": "https://x.com/Nizi_Pale_info",
+    "instagram": "https://www.instagram.com/nizi_pale_info/",
+    "tiktok": "https://www.tiktok.com/@nizi_pale_official",
+    "youtube": "https://www.youtube.com/@niziiro7203"
+  },
+  "newsFallback": [
+    {
+      "date": "2025.8.12",
+      "title": "豊洲PIT 3rdワンマンLIVEを開催"
+    },
+    {
+      "date": "2025.10.10",
+      "title": "ビクターエンタテインメントより1st メジャーシングルをリリース"
+    },
+    {
+      "date": "2026.1.9",
+      "title": "浅草花劇場 バントセット単独LIVEを開催"
+    }
+  ],
+  "members": [
+    {
+      "name": "あきと",
+      "color": "イエロー",
+      "birthday": "2月21日",
+      "hobby": "TCG/ガンプラ",
+      "skill": "綺麗な球体を作れる",
+      "image": "/akito1.jpg"
+    },
+    {
+      "name": "けんご",
+      "color": "グリーン",
+      "birthday": "4月3日",
+      "hobby": "東京ヴェルディ",
+      "skill": "サッカー(幼稚園から)",
+      "image": "/kengo2.jpg"
+    },
+    {
+      "name": "だいや",
+      "color": "レッド",
+      "birthday": "4月15日",
+      "hobby": "YouTube鑑賞",
+      "skill": "バスケ(全国大会出場)",
+      "image": "/daiya3.jpg"
+    },
+    {
+      "name": "なぎさ",
+      "color": "ライトブルー",
+      "birthday": "7月28日",
+      "hobby": "温泉",
+      "skill": "鼻がいい",
+      "image": "/nagisa4.jpg"
+    },
+    {
+      "name": "ましろ",
+      "color": "ピンク",
+      "birthday": "2月28日",
+      "hobby": "犬の散歩",
+      "skill": "コスプレ/歌ってみた",
+      "image": "/mashiro5.jpg"
+    },
+    {
+      "name": "ゆいと",
+      "color": "オレンジ",
+      "birthday": "12月19日",
+      "hobby": "スニーカー探し",
+      "skill": "サッカー",
+      "image": "/yuito6.jpg"
+    }
+  ],
+  "about": "NiziIRO ぱれっとは、鮮やかな個性とハーモニーで魅了するボーイズグループ。ライブ・映像・SNSを通じて多彩な『色』を届けます。",
+  "music": {
+    "artist": "https://music.apple.com/jp/artist/niziiroぱれっと/1647296638",
+    "songs": [
+      {
+        "title": "HAPPY EVER AFTER",
+        "url": "https://music.apple.com/jp/album/happy-ever-after/1805093925?i=1805093926"
+      }
+    ]
+  },
+  "mv": {
+    "title": "MV【HAPPY EVER AFTER】",
+    "embedUrl": "https://www.youtube.com/embed/3l6XSEABLnk?si=TbFfRkadZzHYuq-n"
+  },
+  "contact": "info@nizi-pale.com"
+}
