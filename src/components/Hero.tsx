@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen pt-16 flex items-center"
+      className="relative min-h-[100svh] pt-16 flex items-center overflow-hidden"
     >
       {/* 背景画像 */}
       <div className="absolute inset-0 z-0">
@@ -13,25 +13,10 @@ export function Hero() {
           src="/allmember.jpg"
           alt=""
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" />
-      </div>
-
-      {/* コンテンツ */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-24 text-white">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          NiziIRO
-          <br />
-          ぱれっと
-        </h1>
-        <p className="text-lg md:text-xl mb-8 max-w-2xl">
-          鮮やかな個性とハーモニーで魅了するボーイズグループ。
-          <br />
-          ライブ・映像・SNSを通じて多彩な『色』を届けます。
-        </p>
-        <SocialLinks className="text-white" />
       </div>
     </section>
   );

@@ -4,6 +4,7 @@ import "./globals.css";
 import siteData from "../data/site.json";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import Image from "next/image";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -47,7 +48,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className="scroll-smooth">
-      <body className={`${notoSansJP.variable} font-sans antialiased`}>
+      <body className={`${notoSansJP.variable} font-sans antialiased relative`}>
+        <div className="fixed inset-0 z-[-1]">
+          <Image
+            src="/background.jpg"
+            alt=""
+            fill
+            className="object-cover opacity-15"
+            priority
+          />
+        </div>
         <Header />
         {children}
         <Footer />

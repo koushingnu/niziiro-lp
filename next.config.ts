@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   // 静的ホスティング用の設定
   trailingSlash: true,
   reactStrictMode: true,
+  // ワークスペースルートの設定
+  outputFileTracingRoot: __dirname,
+  // 型付きルートの有効化
+  typedRoutes: true,
 };
 
 export default nextConfig;
