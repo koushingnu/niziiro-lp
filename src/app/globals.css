@@ -27,7 +27,7 @@
 
   /* セクション見出し */
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-primary mb-6 text-center;
+    @apply text-3xl md:text-4xl font-bold text-primary mb-6 pl-0;
   }
 
   /* カードスタイル */
@@ -53,6 +53,6 @@
 
   /* セクションラッパー */
   .section-wrapper {
-    @apply max-w-6xl mx-auto px-4 py-16 md:py-24;
+    @apply max-w-6xl mx-auto py-16 md:py-24;
   }
 }

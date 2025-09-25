@@ -9,10 +9,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#0B65C2",
-        accent: "#E6F0FB",
+        primary: "#7BA7D7", // より淡い青色
+        accent: "#F5F8FC", // より淡いアクセントカラー
         background: "#FFFFFF",
-        foreground: "#0A0A0A",
+        foreground: "#2C3E50", // より柔らかい文字色
       },
       maxWidth: {
         "6xl": "72rem",

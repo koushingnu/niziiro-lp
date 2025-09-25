@@ -48,7 +48,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className="scroll-smooth">
-      <body className={`${notoSansJP.variable} font-sans antialiased relative`}>
+      <body
+        className={`${notoSansJP.variable} font-serif font-bold antialiased relative`}
+      >
         <div className="fixed inset-0 z-[-1]">
           <Image
             src="/background.jpg"

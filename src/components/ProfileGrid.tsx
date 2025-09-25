@@ -17,7 +17,7 @@ export function ProfileGrid() {
       {siteData.members.map((member) => (
         <div
           key={member.name}
-          className="group relative bg-white rounded-2xl shadow-soft overflow-hidden transition-transform duration-300 hover:-translate-y-2"
+          className="group relative bg-white/95 rounded-2xl shadow-lg overflow-hidden transition-all duration-150 hover:shadow-xl border border-white/20"
         >
           {/* カラーアクセント */}
           <div
@@ -33,7 +33,7 @@ export function ProfileGrid() {
               alt={member.name}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-150 group-hover:scale-[1.02]"
               priority={member.name === "あきと"} // 最初のメンバーは優先読み込み
             />
             {/* オーバーレイグラデーション */}
@@ -41,11 +41,11 @@ export function ProfileGrid() {
           </div>
 
           {/* プロフィール情報 */}
-          <div className="p-6 space-y-4">
-            <div className="flex items-center gap-3">
-              <h3 className="text-2xl font-bold">{member.name}</h3>
+          <div className="p-8 space-y-6">
+            <div className="flex items-center gap-4">
+              <h3 className="text-3xl font-bold">{member.name}</h3>
               <span
-                className={`px-3 py-1 text-sm text-white rounded-full ${
+                className={`px-4 py-1.5 text-sm font-medium text-white rounded-full shadow-sm ${
                   colorMap[member.color]
                 }`}
               >
@@ -53,18 +53,18 @@ export function ProfileGrid() {
               </span>
             </div>
 
-            <dl className="space-y-2 text-sm">
-              <div className="flex items-center gap-4">
-                <dt className="font-medium min-w-20">誕生日</dt>
-                <dd>{member.birthday}</dd>
+            <dl className="space-y-4 text-base">
+              <div className="flex items-start gap-6">
+                <dt className="font-medium text-gray-600 min-w-24">誕生日</dt>
+                <dd className="flex-1">{member.birthday}</dd>
               </div>
-              <div className="flex items-center gap-4">
-                <dt className="font-medium min-w-20">趣味</dt>
-                <dd>{member.hobby}</dd>
+              <div className="flex items-start gap-6">
+                <dt className="font-medium text-gray-600 min-w-24">趣味</dt>
+                <dd className="flex-1">{member.hobby}</dd>
               </div>
-              <div className="flex items-center gap-4">
-                <dt className="font-medium min-w-20">特技</dt>
-                <dd>{member.skill}</dd>
+              <div className="flex items-start gap-6">
+                <dt className="font-medium text-gray-600 min-w-24">特技</dt>
+                <dd className="flex-1">{member.skill}</dd>
               </div>
             </dl>
           </div>
