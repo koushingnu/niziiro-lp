@@ -5,17 +5,20 @@ import nextPlugin from "@next/eslint-plugin-next";
 
 export default tseslint.config(
   {
-    extends: [
-      eslint.configs.recommended,
-      ...tseslint.configs.recommended,
-      eslintConfigPrettier,
-    ],
     ignores: [
       "**/node_modules/**",
       "**/dist/**",
       "**/build/**",
       "**/out/**",
       "**/.next/**",
+    ],
+  },
+  {
+    files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"],
+    extends: [
+      eslint.configs.recommended,
+      ...tseslint.configs.recommended,
+      eslintConfigPrettier,
     ],
   },
   {

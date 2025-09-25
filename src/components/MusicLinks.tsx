@@ -1,99 +1,60 @@
 import siteData from "../data/site.json";
 
 export function MusicLinks() {
+  const releases = [
+    {
+      title: "HAPPY EVER AFTER",
+      releaseDate: "2025.2.14",
+      type: "Single",
+      embedId: "1805093925?i=1805093926",
+    },
+    {
+      title: "Love At First Sight",
+      releaseDate: "2024.12.20",
+      type: "Single",
+      embedId: "1647296638",
+    },
+    {
+      title: "Palesentte",
+      releaseDate: "2023.11.1",
+      type: "Single",
+      embedId: "1647296638",
+    },
+  ];
+
   return (
-    <div className="grid gap-8 md:grid-cols-2">
-      {/* アーティストリンク */}
-      <div className="group relative bg-white rounded-2xl shadow-soft overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-        {/* カラーアクセント */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-pink-500" />
+    <div className="max-w-4xl mx-auto">
+      {/* 最新リリース */}
+      <div className="bg-white/95 rounded-2xl shadow-lg overflow-hidden">
+        <div className="relative">
+          {/* カラーアクセント */}
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-pink-500" />
 
-        <div className="p-8 text-center">
-          <h3 className="text-2xl font-bold mb-6">Artist Page</h3>
-          <a
-            href={siteData.music.artist}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-pink-500 text-white rounded-full font-medium transition-transform duration-300 hover:scale-105"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-            </svg>
-            Apple Music で聴く
-            <span className="sr-only">（新しいタブで開く）</span>
-          </a>
-        </div>
-
-        {/* デコレーション */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-pink-500/5 pointer-events-none" />
-      </div>
-
-      {/* 楽曲リンク */}
-      <div className="space-y-4">
-        <h3 className="text-2xl font-bold mb-6">Latest Songs</h3>
-        {siteData.music.songs.map((song) => (
-          <div
-            key={song.title}
-            className="group relative bg-white rounded-2xl shadow-soft overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-          >
-            {/* カラーアクセント */}
-            <div className="absolute top-0 left-0 w-1 h-full bg-primary group-hover:w-2 transition-all duration-300" />
-
-            <div className="p-6">
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex-1">
-                  <h4 className="text-lg font-bold group-hover:text-primary transition-colors">
-                    {song.title}
-                  </h4>
-                  <p className="text-sm text-gray-600 mt-1">NiziIRO ぱれっと</p>
-                </div>
-                <a
-                  href={song.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-primary text-white rounded-full transition-transform duration-300 group-hover:scale-110"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  <span className="sr-only">
-                    {song.title}を Apple Music で再生（新しいタブで開く）
-                  </span>
-                </a>
-              </div>
+          <div className="p-8">
+            <div className="flex items-center gap-4 mb-6">
+              <h4 className="text-2xl font-bold">{releases[0].title}</h4>
+              <span className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full">
+                Latest Release
+              </span>
             </div>
-
-            {/* デコレーション */}
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary/20 to-transparent" />
+            <p className="text-sm text-gray-600 mb-6">
+              {releases[0].releaseDate} - {releases[0].type}
+            </p>
+            <div className="rounded-lg overflow-hidden bg-black/5">
+              <iframe
+                allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                height="200"
+                style={{
+                  width: "100%",
+                  overflow: "hidden",
+                  background: "transparent",
+                  border: 0,
+                }}
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                src={`https://embed.music.apple.com/jp/album/${releases[0].embedId}?app=music&amp;itsct=music_box_player&amp;itscg=30200&amp;ls=1`}
+              />
+            </div>
           </div>
-        ))}
-
-        {/* Apple Music埋め込みプレイヤー */}
-        <div className="mt-8 rounded-2xl overflow-hidden shadow-soft bg-white">
-          <iframe
-            allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-            height="450"
-            style={{
-              width: "100%",
-              maxWidth: "660px",
-              overflow: "hidden",
-              borderRadius: "10px",
-            }}
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-            src={`https://embed.music.apple.com/jp/artist/${siteData.music.artist.split("/").pop()}`}
-          />
         </div>
       </div>
     </div>

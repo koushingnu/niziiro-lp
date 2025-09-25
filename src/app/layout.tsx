@@ -48,6 +48,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className="scroll-smooth">
+      <head>
+        <script src="https://js-cdn.music.apple.com/musickit/v3/musickit.js"></script>
+      </head>
       <body
         className={`${notoSansJP.variable} font-serif font-bold antialiased relative`}
       >
