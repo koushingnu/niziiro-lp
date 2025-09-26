@@ -3,12 +3,12 @@ import siteData from "../data/site.json";
 
 // メンバーカラーのマッピング
 const colorMap: { [key: string]: string } = {
-  イエロー: "bg-yellow-400",
-  グリーン: "bg-green-500",
-  レッド: "bg-red-500",
-  ライトブルー: "bg-sky-400",
-  ピンク: "bg-pink-400",
-  オレンジ: "bg-orange-400",
+  イエロー: "bg-gradient-to-r from-amber-300 to-yellow-400",
+  グリーン: "bg-gradient-to-r from-emerald-400 to-green-500",
+  レッド: "bg-gradient-to-r from-rose-500 to-red-500",
+  ライトブルー: "bg-gradient-to-r from-cyan-400 to-sky-500",
+  ピンク: "bg-gradient-to-r from-pink-400 to-rose-400",
+  オレンジ: "bg-gradient-to-r from-orange-400 to-amber-500",
 };
 
 export function ProfileGrid() {
@@ -17,56 +17,52 @@ export function ProfileGrid() {
       {siteData.members.map((member) => (
         <div
           key={member.name}
-          className="group relative bg-white/95 rounded-2xl shadow-lg overflow-hidden transition-all duration-150 hover:shadow-xl border border-white/20"
+          className={`group relative bg-white/95 rounded-2xl overflow-hidden transition-all duration-150
+            p-[2px] bg-gradient-to-r ${colorMap[member.color]}`}
         >
-          {/* カラーアクセント */}
-          <div
-            className={`absolute top-0 left-0 w-full h-1 ${
-              colorMap[member.color]
-            }`}
-          />
-
-          {/* 画像コンテナ */}
-          <div className="relative aspect-[4/3]">
-            <Image
-              src={member.image}
-              alt={member.name}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover transition-transform duration-150 group-hover:scale-[1.02]"
-              priority={member.name === "あきと"} // 最初のメンバーは優先読み込み
-            />
-            {/* オーバーレイグラデーション */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
-
-          {/* プロフィール情報 */}
-          <div className="p-8 space-y-6">
-            <div className="flex items-center gap-4">
-              <h3 className="text-3xl font-bold">{member.name}</h3>
-              <span
-                className={`px-4 py-1.5 text-sm font-medium text-white rounded-full shadow-sm ${
-                  colorMap[member.color]
-                }`}
-              >
-                {member.color}
-              </span>
+          <div className="bg-white rounded-xl overflow-hidden">
+            {/* 画像コンテナ */}
+            <div className="relative aspect-[4/3]">
+              <Image
+                src={member.image}
+                alt={member.name}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover"
+                priority={member.name === "あきと"}
+              />
+              {/* オーバーレイグラデーション */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-150`}
+              />
             </div>
 
-            <dl className="space-y-4 text-base">
-              <div className="flex items-start gap-6">
-                <dt className="font-medium text-gray-600 min-w-24">誕生日</dt>
-                <dd className="flex-1">{member.birthday}</dd>
+            {/* プロフィール情報 */}
+            <div className="p-8 space-y-6">
+              <div className="flex items-center gap-4">
+                <h3 className="text-3xl font-bold">{member.name}</h3>
+                <span
+                  className={`px-4 py-1.5 text-sm font-bold text-white rounded-full ${colorMap[member.color]}`}
+                >
+                  {member.color}
+                </span>
               </div>
-              <div className="flex items-start gap-6">
-                <dt className="font-medium text-gray-600 min-w-24">趣味</dt>
-                <dd className="flex-1">{member.hobby}</dd>
-              </div>
-              <div className="flex items-start gap-6">
-                <dt className="font-medium text-gray-600 min-w-24">特技</dt>
-                <dd className="flex-1">{member.skill}</dd>
-              </div>
-            </dl>
+
+              <dl className="space-y-4 text-base">
+                <div className="flex items-start gap-6 p-2 -mx-2 rounded-lg hover:bg-black/5 transition-all duration-150">
+                  <dt className="font-medium text-gray-500 min-w-24">誕生日</dt>
+                  <dd className="flex-1 font-medium">{member.birthday}</dd>
+                </div>
+                <div className="flex items-start gap-6 p-2 -mx-2 rounded-lg hover:bg-black/5 transition-all duration-150">
+                  <dt className="font-medium text-gray-500 min-w-24">趣味</dt>
+                  <dd className="flex-1 font-medium">{member.hobby}</dd>
+                </div>
+                <div className="flex items-start gap-6 p-2 -mx-2 rounded-lg hover:bg-black/5 transition-all duration-150">
+                  <dt className="font-medium text-gray-500 min-w-24">特技</dt>
+                  <dd className="flex-1 font-medium">{member.skill}</dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </div>
       ))}

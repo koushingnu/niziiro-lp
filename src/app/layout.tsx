@@ -49,7 +49,16 @@ export default function RootLayout({
   return (
     <html lang="ja" className="scroll-smooth">
       <head>
-        <script src="https://js-cdn.music.apple.com/musickit/v3/musickit.js"></script>
+        <script
+          src="https://js-cdn.music.apple.com/musickit/v3/musickit.js"
+          async
+          defer
+        />
+        <link
+          rel="preload"
+          href="/background.jpg"
+          as="image"
+        />
       </head>
       <body
         className={`${notoSansJP.variable} font-serif font-bold antialiased relative`}

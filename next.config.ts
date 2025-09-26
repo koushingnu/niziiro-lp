@@ -4,14 +4,19 @@ const nextConfig: NextConfig = {
   output: "export",
   images: {
     unoptimized: true,
+    remotePatterns: [],
   },
   // 静的ホスティング用の設定
   trailingSlash: true,
-  reactStrictMode: true,
-  // ワークスペースルートの設定
-  outputFileTracingRoot: __dirname,
-  // 型付きルートの有効化
-  typedRoutes: true,
+  reactStrictMode: false,
+  // パフォーマンス最適化
+  poweredByHeader: false,
+  compress: true,
+  // キャッシュ設定
+  onDemandEntries: {
+    maxInactiveAge: 60 * 60 * 1000,
+    pagesBufferLength: 2,
+  },
 };
 
 export default nextConfig;
