@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Image from "next/image";
 import siteData from "../data/site.json";
 
@@ -11,18 +12,35 @@ const colorMap: { [key: string]: string } = {
   オレンジ: "bg-gradient-to-r from-orange-400 to-amber-500",
 };
 
-export function ProfileGrid() {
+const ProfileGrid = memo(function ProfileGrid() {
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div
+      className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      style={{
+        willChange: "transform",
+        transform: "translateZ(0)",
+      }}
+    >
       {siteData.members.map((member) => (
         <div
           key={member.name}
           className={`group relative bg-white/95 rounded-2xl overflow-hidden transition-all duration-150
             p-[2px] bg-gradient-to-r ${colorMap[member.color]}`}
+          style={{
+            willChange: "transform",
+            transform: "translateZ(0)",
+          }}
         >
           <div className="bg-white rounded-xl overflow-hidden">
             {/* 画像コンテナ */}
-            <div className="relative aspect-[4/3]">
+            <div
+              className="relative aspect-[4/3]"
+              style={{
+                willChange: "transform",
+                transform: "translateZ(0)",
+                backfaceVisibility: "hidden",
+              }}
+            >
               <Image
                 src={member.image}
                 alt={member.name}
@@ -30,10 +48,16 @@ export function ProfileGrid() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover"
                 priority={member.name === "あきと"}
+                loading="eager"
+                quality={90}
               />
               {/* オーバーレイグラデーション */}
               <div
                 className={`absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-150`}
+                style={{
+                  willChange: "opacity",
+                  backfaceVisibility: "hidden",
+                }}
               />
             </div>
 
@@ -68,4 +92,6 @@ export function ProfileGrid() {
       ))}
     </div>
   );
-}
+});
+
+export { ProfileGrid };
