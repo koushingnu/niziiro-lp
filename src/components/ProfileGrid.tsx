@@ -1,5 +1,6 @@
 import { memo } from "react";
 import Image from "next/image";
+import { FaXTwitter, FaInstagram, FaTiktok } from "react-icons/fa6";
 import siteData from "../data/site.json";
 
 // メンバーカラーのマッピング
@@ -86,6 +87,34 @@ const ProfileGrid = memo(function ProfileGrid() {
                   <dd className="flex-1 font-medium">{member.skill}</dd>
                 </div>
               </dl>
+
+              {/* SNSリンク */}
+              <div className="flex items-center gap-4 pt-4">
+                <a
+                  href={member.social.x}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-black transition-colors duration-150"
+                >
+                  <FaXTwitter size={24} />
+                </a>
+                <a
+                  href={member.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-pink-600 transition-colors duration-150"
+                >
+                  <FaInstagram size={24} />
+                </a>
+                <a
+                  href={member.social.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-black transition-colors duration-150"
+                >
+                  <FaTiktok size={24} />
+                </a>
+              </div>
             </div>
           </div>
         </div>

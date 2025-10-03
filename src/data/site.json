@@ -29,7 +29,12 @@
       "birthday": "2月21日",
       "hobby": "TCG/ガンプラ",
       "skill": "綺麗な球体を作れる",
-      "image": "/akito1.jpg"
+      "image": "/akito1.jpg",
+      "social": {
+        "x": "https://x.com/Nizi_Pale_Akito",
+        "instagram": "https://www.instagram.com/akito_nizi_pale/",
+        "tiktok": "https://www.tiktok.com/@nizi_pale_akito"
+      }
     },
     {
       "name": "けんご",
@@ -37,7 +42,12 @@
       "birthday": "4月3日",
       "hobby": "東京ヴェルディ",
       "skill": "サッカー(幼稚園から)",
-      "image": "/kengo2.jpg"
+      "image": "/kengo2.jpg",
+      "social": {
+        "x": "https://x.com/Nizi_Pale_Kengo",
+        "instagram": "https://www.instagram.com/kengo_nizi_pale/",
+        "tiktok": "https://www.tiktok.com/@nizipale_kengo"
+      }
     },
     {
       "name": "だいや",
@@ -45,7 +55,12 @@
       "birthday": "4月15日",
       "hobby": "YouTube鑑賞",
       "skill": "バスケ(全国大会出場)",
-      "image": "/daiya3.jpg"
+      "image": "/daiya3.jpg",
+      "social": {
+        "x": "https://x.com/Nizi_Pale_Daiya",
+        "instagram": "https://www.instagram.com/daiya_nizi_pale/",
+        "tiktok": "https://www.tiktok.com/@nizi_pale_daiya"
+      }
     },
     {
       "name": "なぎさ",
@@ -53,7 +68,12 @@
       "birthday": "7月28日",
       "hobby": "温泉",
       "skill": "鼻がいい",
-      "image": "/nagisa4.jpg"
+      "image": "/nagisa4.jpg",
+      "social": {
+        "x": "https://x.com/Nizi_Pale_Nagi",
+        "instagram": "https://www.instagram.com/nagisa_nizi_pale/",
+        "tiktok": "https://www.tiktok.com/@nagisa_tiktok_"
+      }
     },
     {
       "name": "ましろ",
@@ -61,7 +81,12 @@
       "birthday": "2月28日",
       "hobby": "犬の散歩",
       "skill": "コスプレ/歌ってみた",
-      "image": "/mashiro5.jpg"
+      "image": "/mashiro5.jpg",
+      "social": {
+        "x": "https://x.com/Nizi_Pale_Mashi",
+        "instagram": "https://www.instagram.com/mashiro_nizi_pale/",
+        "tiktok": "https://www.tiktok.com/@mashiro_nizi_pale"
+      }
     },
     {
       "name": "ゆいと",
@@ -69,7 +94,12 @@
       "birthday": "12月19日",
       "hobby": "スニーカー探し",
       "skill": "サッカー",
-      "image": "/yuito6.jpg"
+      "image": "/yuito6.jpg",
+      "social": {
+        "x": "https://x.com/Nizi_Pale_Yuito",
+        "instagram": "https://www.instagram.com/yuito_nizi_pale/",
+        "tiktok": "https://www.tiktok.com/@yuitodesu_"
+      }
     }
   ],
   "about": "NiziIRO ぱれっとは、鮮やかな個性とハーモニーで魅了するボーイズグループ。ライブ・映像・SNSを通じて多彩な『色』を届けます。",

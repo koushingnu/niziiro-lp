@@ -6,6 +6,7 @@ import { AboutSection } from "../components/AboutSection";
 import { MusicLinks } from "../components/MusicLinks";
 import { MVEmbed } from "../components/MVEmbed";
 import { ContactBlock } from "../components/ContactBlock";
+import { TimeTreeSection } from "../components/TimeTreeSection";
 import { getNews } from "../lib/news";
 
 export default async function Home() {
@@ -34,6 +35,8 @@ export default async function Home() {
       <Section id="mv" title="MUSIC VIDEO">
         <MVEmbed />
       </Section>
+
+      <TimeTreeSection />
 
       <Section id="contact" title="CONTACT">
         <ContactBlock />
