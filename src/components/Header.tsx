@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 const NAV_ITEMS = [
@@ -15,47 +15,31 @@ const NAV_ITEMS = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
 
-  // スクロール位置の監視
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+  // スムーススクロール関数
+  const handleNavClick = (href: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
 
-      // アクティブセクションの検出
-      const sections = NAV_ITEMS.map((item) => item.href.slice(1));
-      const current = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
+    const targetId = href.slice(1);
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
-
-      if (current) {
-        setActiveSection(current);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    }
+  };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto h-16 flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+      <div className="max-w-6xl mx-auto h-16 flex items-center justify-between px-4">
         <a
           href="#home"
-          className="relative w-64 h-16 transition-transform duration-300 hover:scale-105"
+          className="relative w-48 sm:w-56 md:w-64 h-16 transition-transform duration-300 hover:scale-105"
         >
           <Image
-            src="/logo/logo.png"
+            src="/nizi_pale/logo/logo.png"
             alt="NiziIRO ぱれっと"
             fill
             className="object-contain"
@@ -64,21 +48,14 @@ export function Header() {
         </a>
 
         {/* デスクトップナビゲーション */}
-        <nav className="hidden md:block ml-auto">
+        <nav className="hidden md:block">
           <ul className="flex gap-6">
             {NAV_ITEMS.map(({ href, label }) => (
               <li key={href}>
                 <a
                   href={href}
-                  className={`relative py-2 text-sm font-medium transition-colors ${
-                    isScrolled
-                      ? "text-foreground hover:text-primary"
-                      : "text-white hover:text-white/80"
-                  } ${
-                    activeSection === href.slice(1)
-                      ? "after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-current after:rounded-full"
-                      : ""
-                  }`}
+                  onClick={(e) => handleNavClick(href, e)}
+                  className="relative py-2 text-sm font-medium transition-colors text-foreground hover:text-primary cursor-pointer"
                 >
                   {label}
                 </a>
@@ -87,34 +64,32 @@ export function Header() {
           </ul>
         </nav>
 
-        {/* モバイルメニューボタン */}
+        {/* モバイルメニューボタン - 右寄せ */}
         <button
           type="button"
-          className={`md:hidden p-2 transition-colors ${
-            isScrolled ? "text-foreground" : "text-white"
-          }`}
+          className="md:hidden p-3 transition-colors rounded-lg hover:bg-gray-100 text-foreground"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
         >
-          <div className="w-6 h-5 relative">
+          <div className="w-6 h-6 relative">
             <span
               className={`absolute w-full h-0.5 bg-current transition-all duration-300 ${
                 isMenuOpen
-                  ? "top-2 rotate-45"
-                  : "top-0 opacity-100 transform-none"
+                  ? "top-3 rotate-45"
+                  : "top-1 opacity-100 transform-none"
               }`}
             />
             <span
-              className={`absolute w-full h-0.5 bg-current top-2 transition-all duration-300 ${
+              className={`absolute w-full h-0.5 bg-current top-3 transition-all duration-300 ${
                 isMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
               }`}
             />
             <span
               className={`absolute w-full h-0.5 bg-current transition-all duration-300 ${
                 isMenuOpen
-                  ? "top-2 -rotate-45"
-                  : "top-4 opacity-100 transform-none"
+                  ? "top-3 -rotate-45"
+                  : "top-5 opacity-100 transform-none"
               }`}
             />
           </div>
@@ -134,12 +109,8 @@ export function Header() {
             <li key={href}>
               <a
                 href={href}
-                className={`block py-3 text-lg font-medium transition-all ${
-                  activeSection === href.slice(1)
-                    ? "text-primary translate-x-2"
-                    : "text-foreground hover:text-primary hover:translate-x-2"
-                }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => handleNavClick(href, e)}
+                className="block py-3 text-lg font-medium transition-all cursor-pointer text-foreground hover:text-primary hover:translate-x-2"
               >
                 {label}
               </a>

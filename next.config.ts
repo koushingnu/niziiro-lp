@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
+  basePath: "/nizi_pale",
   images: {
     unoptimized: true,
     remotePatterns: [],
@@ -11,11 +12,12 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   // パフォーマンス最適化
   poweredByHeader: false,
-  compress: true,
-  // キャッシュ設定
-  onDemandEntries: {
-    maxInactiveAge: 60 * 60 * 1000,
-    pagesBufferLength: 2,
+  compress: false, // 画像圧縮を無効化
+  // チャンクエラーを防ぐ設定
+  webpack: (config) => {
+    config.optimization.splitChunks = false;
+    config.optimization.runtimeChunk = false;
+    return config;
   },
 };
 

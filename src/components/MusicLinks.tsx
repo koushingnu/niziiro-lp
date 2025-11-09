@@ -23,16 +23,18 @@ export function MusicLinks() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6">
       {/* 最新リリース */}
       <div className="bg-white/95 rounded-2xl shadow-lg overflow-hidden">
         <div className="relative">
           {/* カラーアクセント */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-pink-500" />
 
-          <div className="p-8">
-            <div className="flex items-center gap-4 mb-6">
-              <h4 className="text-2xl font-bold">{releases[0].title}</h4>
+          <div className="p-4 sm:p-6 lg:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
+              <h4 className="text-xl sm:text-2xl font-bold">
+                {releases[0].title}
+              </h4>
               <span className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full">
                 Latest Release
               </span>

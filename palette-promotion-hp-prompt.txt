@@ -1,0 +1,250 @@
+# Palette Promotion 会社HP作成プロンプト
+
+## プロジェクト概要
+Palette Promotion株式会社の公式ホームページを作成するNext.jsプロジェクトです。
+既存のNiziIROぱれっとLPと同じ技術スタックとビルド設定を使用して統一感を保ちます。
+
+## 技術仕様
+- **フレームワーク**: Next.js 15.5.3
+- **スタイリング**: Tailwind CSS
+- **言語**: TypeScript
+- **ビルド設定**: 静的エクスポート（output: "export"）
+- **デプロイ先**: https://palette-promotion.com/（ルートディレクトリ）
+- **画像最適化**: sharp ライブラリ使用
+
+## ディレクトリ構造
+```
+src/
+├── app/
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── not-found.tsx
+│   └── page.tsx
+├── components/
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   ├── Hero.tsx
+│   ├── NewsSection.tsx
+│   ├── ArtistSection.tsx
+│   ├── TalentGrid.tsx
+│   ├── CompanyInfo.tsx
+│   ├── ContactSection.tsx
+│   └── AuditionSection.tsx
+├── data/
+│   └── company.json
+└── lib/
+    └── news.ts
+```
+
+## デザイン要件
+
+### カラーパレット
+- **ベースカラー**: 白・黒
+- **アクセントカラー**: 必要に応じて追加
+
+### 参考サイト
+- WACK: https://www.wack.jp
+- レプロ: https://www.lespros.co.jp
+
+### レスポンシブ対応
+- モバイルファーストデザイン
+- タブレット・デスクトップ対応
+- 既存LPと同じレスポンシブ設計パターン
+
+## コンテンツ構成
+
+### 1. HOME
+- 会社ロゴ
+- ヒーロー画像
+- 公式SNSリンク
+  - X: https://x.com/Nizi_Pale_info
+  - Instagram: https://www.instagram.com/nizi_pale_info/
+
+### 2. NEWS（記事投稿機能付き）
+- 2025.8.12 豊洲PIT 3rdワンマンLIVEを開催
+- 2025.10.10 ビクターエンタテインメントより1st メジャーシングルをリリース
+- 2025.10.15 palette promotion × ビクターエンタテインメント共同オーディション【NEXT IDOL PROJECT2025】開催
+- 2026.1.9 浅草花劇場 バントセット単独LIVEを開催
+
+### 3. アーティスト
+**NiziIROぱれっと**
+- コンセプト: "個性豊かに咲く花のように、あなたと架ける虹のように、みんなを笑顔にできますように。"
+- 2022年ステージデビュー
+- 2024年3月 KANSAI COLLECTION2024 S/S 出演（2万人の前でパフォーマンス）
+- 2024年9月 代々木野外音楽堂にて初の野外ワンマンライブ開催
+- 2025年8月 都内最大級の豊洲PITでのワンマンライブ開催
+- 2025年10月 ビクターエンタテインメントからメジャーデビュー
+
+**公式SNS**
+- X: https://x.com/Nizi_Pale_info
+- Instagram: https://www.instagram.com/nizi_pale_info/
+- TikTok: https://www.tiktok.com/@nizi_pale_official
+- YouTube: https://www.youtube.com/@niziiro7203
+
+### 4. タレント
+**あきと**
+- 担当カラー: イエロー
+- 誕生日: 2月21日
+- 趣味: TCG/ガンプラ
+- 特技: 綺麗な球体を作れる
+
+**けんご**
+- 担当カラー: グリーン
+- 誕生日: 4月3日
+- 趣味: 東京ヴェルディ
+- 特技: サッカー(幼稚園から)
+
+**だいや**
+- 担当カラー: レッド
+- 誕生日: 4月15日
+- 趣味: YouTube鑑賞
+- 特技: バスケ(全国大会出場)
+
+**なぎさ**
+- 担当カラー: ライトブルー
+- 誕生日: 7月28日
+- 趣味: 温泉
+- 特技: 鼻がいい
+
+**ましろ**
+- 担当カラー: ピンク
+- 誕生日: 2月28日
+- 趣味: 犬の散歩
+- 特技: コスプレ/歌ってみた
+
+**ゆいと**
+- 担当カラー: オレンジ
+- 誕生日: 12月19日
+- 趣味: スニーカー探し
+- 特技: サッカー
+
+### 5. 会社情報
+- 社名: 株式会社palette promotion
+- 設立: 2024年2月
+- 資本金: 100万円
+- 住所: [要追加]
+- 事業内容: 俳優、タレント、モデル、歌手、スポーツ選手、文化人等のマネージメント・プロデュース、番組・催物及び出版物等の企画、制作広告宣伝物の企画、制作並び代理業
+- 取引銀行: [要追加]
+
+### 6. CONTACT
+- メール: info@nizi-pale.com
+
+### 7. オーディション
+- 概要: 詳細が確定次第追加
+
+## 技術的な注意点
+
+### Next.js設定
+```typescript
+// next.config.ts
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  output: "export",
+  images: {
+    unoptimized: true,
+    remotePatterns: [],
+  },
+  trailingSlash: true,
+  reactStrictMode: false,
+  poweredByHeader: false,
+  compress: true,
+  // チャンクエラーを防ぐ設定
+  webpack: (config) => {
+    config.optimization.splitChunks = false;
+    config.optimization.runtimeChunk = false;
+    return config;
+  },
+};
+
+export default nextConfig;
+```
+
+### package.json
+```json
+{
+  "name": "palette-promotion-hp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "15.5.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.0.1",
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "15.5.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
+```
+
+### 画像最適化
+- sharpライブラリを使用して画像を最適化
+- 既存LPと同じ画像最適化スクリプトを使用
+
+### デプロイ設定
+- 静的エクスポート（outフォルダ）
+- ルートディレクトリ（https://palette-promotion.com/）にデプロイ
+- .htaccessファイルは不要（ルートデプロイのため）
+
+## 開発手順
+
+1. **プロジェクト初期化**
+   ```bash
+   npx create-next-app@latest palette-promotion-hp --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+   ```
+
+2. **依存関係インストール**
+   ```bash
+   npm install sharp react-icons
+   ```
+
+3. **設定ファイル更新**
+   - next.config.tsを上記設定に更新
+   - package.jsonを上記設定に更新
+
+4. **コンポーネント作成**
+   - 各セクション用のコンポーネントを作成
+   - レスポンシブ対応を実装
+
+5. **画像最適化**
+   - 画像ファイルをpublicフォルダに配置
+   - sharpを使用して画像最適化
+
+6. **ビルド・デプロイ**
+   ```bash
+   npm run build
+   ```
+   - outフォルダの内容をサーバーのルートディレクトリにアップロード
+
+## 既存LPとの統一性
+- 同じNext.jsバージョン（15.5.3）
+- 同じビルド設定（静的エクスポート）
+- 同じレスポンシブ設計パターン
+- 同じ画像最適化手法
+- 統一されたデザインシステム
+
+## 追加要件
+- SEO最適化
+- アクセシビリティ対応
+- パフォーマンス最適化
+- クロスブラウザ対応
+
+---
+
+このプロンプトを使用してPalette Promotion株式会社の公式ホームページを作成してください。

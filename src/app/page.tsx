@@ -1,3 +1,4 @@
+import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
 import { Section } from "../components/Section";
 import { NewsList } from "../components/NewsList";
@@ -7,40 +8,45 @@ import { MusicLinks } from "../components/MusicLinks";
 import { MVEmbed } from "../components/MVEmbed";
 import { ContactBlock } from "../components/ContactBlock";
 import { TimeTreeSection } from "../components/TimeTreeSection";
+import { Footer } from "../components/Footer";
 import { getNews } from "../lib/news";
 
 export default async function Home() {
   const news = await getNews();
 
   return (
-    <main>
-      <Hero />
+    <>
+      <Header />
+      <main>
+        <Hero />
 
-      <Section id="news" title="NEWS">
-        <NewsList items={news} />
-      </Section>
+        <Section id="news" title="NEWS">
+          <NewsList items={news} />
+        </Section>
 
-      <Section id="profile" title="PROFILE">
-        <ProfileGrid />
-      </Section>
+        <Section id="profile" title="PROFILE">
+          <ProfileGrid />
+        </Section>
 
-      <Section id="about" title="ABOUT">
-        <AboutSection />
-      </Section>
+        <Section id="about" title="ABOUT">
+          <AboutSection />
+        </Section>
 
-      <Section id="music" title="MUSIC">
-        <MusicLinks />
-      </Section>
+        <Section id="music" title="MUSIC">
+          <MusicLinks />
+        </Section>
 
-      <Section id="mv" title="MUSIC VIDEO">
-        <MVEmbed />
-      </Section>
+        <Section id="mv" title="MUSIC VIDEO">
+          <MVEmbed />
+        </Section>
 
-      <TimeTreeSection />
+        <TimeTreeSection />
 
-      <Section id="contact" title="CONTACT">
-        <ContactBlock />
-      </Section>
-    </main>
+        <Section id="contact" title="CONTACT">
+          <ContactBlock />
+        </Section>
+      </main>
+      <Footer />
+    </>
   );
 }

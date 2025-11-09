@@ -16,7 +16,7 @@ const colorMap: { [key: string]: string } = {
 const ProfileGrid = memo(function ProfileGrid() {
   return (
     <div
-      className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-6 max-w-7xl mx-auto"
       style={{
         willChange: "transform",
         transform: "translateZ(0)",
@@ -26,7 +26,7 @@ const ProfileGrid = memo(function ProfileGrid() {
         <div
           key={member.name}
           className={`group relative bg-white/95 rounded-2xl overflow-hidden transition-all duration-150
-            p-[2px] bg-gradient-to-r ${colorMap[member.color]}`}
+            p-[1px] bg-gradient-to-r ${colorMap[member.color]}`}
           style={{
             willChange: "transform",
             transform: "translateZ(0)",
@@ -42,15 +42,11 @@ const ProfileGrid = memo(function ProfileGrid() {
                 backfaceVisibility: "hidden",
               }}
             >
-              <Image
-                src={member.image}
+              <img
+                src={`/nizi_pale${member.image}`}
                 alt={member.name}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover"
-                priority={member.name === "あきと"}
-                loading="eager"
-                quality={90}
+                className="w-full h-full object-cover"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
               {/* オーバーレイグラデーション */}
               <div
